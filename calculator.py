@@ -15,9 +15,17 @@ operations = {
 }
 
 def start():
+    next_num = True
     num1 = int(input("First number:\n"))
-    num2 = int(input("Second number:\n"))
     for symbol in operations:
         print(symbol)
-    operation_symbol = input("Operation: ")
-    print(f"{num1} {operation_symbol} {num2} = {operations[operation_symbol](num1, num2)}")
+    while next_num:
+        operation_symbol = input("Operation: ")
+        num2 = int(input("Second number:\n"))
+        answer = operations[operation_symbol](num1, num2)
+        print(f"{num1} {operation_symbol} {num2} = {answer}")
+        if input("Next Number (y/n)") == "y":
+            num1 = answer
+        else:
+            next_num = False
+

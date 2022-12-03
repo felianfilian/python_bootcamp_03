@@ -4,7 +4,7 @@ import number_guess
 import days_in_month
 
 # calculator.start()
-# blackjack.start()
+blackjack.start()
 # number_guess.start()
-days_in_month.start()
+# days_in_month.start()
 

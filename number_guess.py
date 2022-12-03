@@ -2,6 +2,15 @@
 # number 1 to 100
 # easy or har level (5)or 10 guesses
 
+logo = """
+   ___                     _             
+  / _ \_   _  ___  ___ ___(_)_ __   __ _ 
+ / /_\/ | | |/ _ \/ __/ __| | '_ \ / _` |
+/ /_\\| |_| |  __/\__ \__ \ | | | | (_| |
+\____/ \__,_|\___||___/___/_|_| |_|\__, |
+                                   |___/ 
+"""
+
 import random
 
 EASY_LEVEL = 10
@@ -9,6 +18,7 @@ HARD_LEVEL = 5
 
 
 def start():
+    print(logo)
     def check_guess(guess, number, chances):
         if guess > number:
             print("too high")

@@ -1,4 +1,4 @@
 
 
-def star():
+def start():
     pass

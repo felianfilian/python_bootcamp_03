@@ -1,9 +1,8 @@
 import calculator
 import blackjack
+import number_guess
 
 # calculator.start()
 blackjack.start()
+number_guess.start()
 
-# number guessing game
-# number 1 to 100
-# easy or har level (5)or 10 guesses

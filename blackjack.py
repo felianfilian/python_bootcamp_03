@@ -1,0 +1,4 @@
+
+
+def star():
+    pass

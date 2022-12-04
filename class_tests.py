@@ -1,12 +1,5 @@
-from turtle import Turtle, Screen
+from prettytable import PrettyTable
 
 def start():
-    timmy = Turtle()
-    timmy.shape("turtle")
-    timmy.color("blue")
-    timmy.forward(100)
-
-    my_screen = Screen()
-    print(my_screen.canvheight)
-    my_screen.exitonclick()
-
+    table = PrettyTable()
+    print(table)

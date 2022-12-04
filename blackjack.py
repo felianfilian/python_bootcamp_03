@@ -1,7 +1,53 @@
 import random
 
+logo = """
+.------.            _     _            _    _            _    
+|A_  _ |.          | |   | |          | |  (_)          | |   
+|( \/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __
+| \  /|K /\  |     | '_ \| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
+|  \/ | /  \ |     | |_) | | (_| | (__|   <| | (_| | (__|   < 
+`-----| \  / |     |_.__/|_|\__,_|\___|_|\_\ |\__,_|\___|_|\_\\
+      |  \/ K|                            _/ |                
+      `------'                           |__/           
+"""
+
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 dealer_next = True
+
+
+def start():
+    print(logo)
+
+    dealer_cards = []
+    player_cards = []
+    game_running = True
+    dealer_sum = 0
+
+    # first round
+    player_cards.append(get_card())
+    dealer_cards.append(get_card())
+    print(f"Dealer: {dealer_cards}")
+
+    while game_running:
+        # next card
+        player_cards.append(get_card())
+        if dealer_sum <= 16:
+            dealer_cards.append(get_card())
+        # get sums
+        dealer_sum = get_sum(dealer_cards)
+        player_sum = get_sum(player_cards)
+
+        # print stats
+        print(f"Player: {player_cards} = {player_sum}")
+        if dealer_sum == 21 or player_sum == 21 or dealer_sum > 21 or player_sum > 21 or input("next card? (y/n)\n") == "n":
+            while dealer_sum <= 16:
+                dealer_cards.append(get_card())
+                dealer_sum = get_sum(dealer_cards)
+            game_running = False
+            print("\nGame finished")
+            print(f"Dealer: {dealer_cards} = {dealer_sum}")
+            print(f"Player: {player_cards} = {player_sum}")
+            wincheck(dealer_sum, player_sum)
 
 def get_card():
     """return random card from deck"""
@@ -34,38 +80,5 @@ def wincheck(dealer_sum, player_sum):
         print("DRAW")
     else:
         print("Player Loose")
-def start():
-    dealer_cards = []
-    player_cards = []
-    game_running = True
-    dealer_sum = 0
-
-    # first round
-    player_cards.append(get_card())
-    dealer_cards.append(get_card())
-    print(f"Dealer: {dealer_cards}")
-
-    while game_running:
-        # next card
-        player_cards.append(get_card())
-        if dealer_sum <= 16:
-            dealer_cards.append(get_card())
-        # get sums
-        dealer_sum = get_sum(dealer_cards)
-        player_sum = get_sum(player_cards)
-
-        # print stats
-        print(f"Player: {player_cards} = {player_sum}")
-        if dealer_sum == 21 or player_sum == 21 or dealer_sum > 21 or player_sum > 21 or input("next card? (y/n)\n") == "n":
-            while dealer_sum <= 16:
-                dealer_cards.append(get_card())
-                dealer_sum = get_sum(dealer_cards)
-            game_running = False
-            print("\nGame finished")
-            print(f"Dealer: {dealer_cards} = {dealer_sum}")
-            print(f"Player: {player_cards} = {player_sum}")
-            wincheck(dealer_sum, player_sum)
-
-
 
 

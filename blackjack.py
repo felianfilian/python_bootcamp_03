@@ -32,7 +32,8 @@ def wincheck(dealer_sum, player_sum):
         print("Player Wins")
     elif dealer_sum == player_sum:
         print("DRAW")
-
+    else:
+        print("Player Loose")
 def start():
     dealer_cards = []
     player_cards = []

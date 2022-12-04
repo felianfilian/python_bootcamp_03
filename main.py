@@ -4,6 +4,7 @@ import number_guess
 import days_in_month
 import high_low_game
 import coffee_machine
+import class_tests
 
 # calculator.start()
 # blackjack.start()
@@ -11,4 +12,4 @@ import coffee_machine
 # days_in_month.start()
 # high_low_game.start()
 coffee_machine.start()
-
+#class_tests.start()

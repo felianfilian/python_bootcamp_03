@@ -3,6 +3,7 @@ from coffee_machine_data import resources
 
 profit = 0
 
+
 def start():
     is_on = True
 
@@ -17,7 +18,8 @@ def start():
                 print("Not enough cash")
             else:
                 ingredients = MENU['espresso']['ingredients']
-                if change_ressource(ingredients['water'], 0, ingredients['coffee']):
+                if check_ressource(ingredients):
+                    change_ressource(ingredients)
                     print(f"Espresso is coming - chasback is: {coins - cost} $")
         if choice == "b":
             print("Latte")
@@ -27,7 +29,8 @@ def start():
                 print("Not enough cash")
             else:
                 ingredients = MENU['latte']['ingredients']
-                if change_ressource(ingredients['water'], ingredients['milk'], ingredients['coffee']):
+                if check_ressource(ingredients):
+                    change_ressource(ingredients)
                     print(f"Latte is coming - chasback is: {coins - cost} $")
         if choice == "c":
             print("Cappuccino")
@@ -37,7 +40,8 @@ def start():
                 print("Not enough cash")
             else:
                 ingredients = MENU['cappuccino']['ingredients']
-                if change_ressource(ingredients['water'], ingredients['milk'], ingredients['coffee']):
+                if check_ressource(ingredients):
+                    change_ressource(ingredients)
                     print(f"Cappuccino is coming - chasback is: {coins - cost} $")
         if choice == "report":
             show_stats()
@@ -50,18 +54,14 @@ def show_stats():
     print(f"Milk: {resources['milk']}")
     print(f"Coffee: {resources['coffee']}")
 
-def change_ressource(water, milk, coffee):
-    if (resources['water'] - water) < 0:
-        print("out of water")
-        return False
-    elif (resources['milk'] - milk) < 0:
-        print("out of milk")
-        return False
-    elif (resources['coffee'] - coffee) < 0:
-        print("out of coffee")
-        return False
-    else:
-        resources['water'] -= water
-        resources['milk'] -= milk
-        resources['coffee'] -= coffee
-        return True
+
+def check_ressource(ingredients):
+    for item in ingredients:
+        if ingredients[item] >= resources[item]:
+            print(f"there is not enough {item}")
+            return False
+    return True
+
+def change_ressource(ingredients):
+    for item in ingredients:
+        resources[item] -= ingredients[item]
